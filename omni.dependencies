@@ -1,0 +1,14 @@
+[
+  {
+    "remote":      "github",
+    "repository":  "nkk71/android_device_qcom_htc-common",
+    "target_path": "device/qcom/htc-common",
+    "revision":    "test"
+  },
+  {
+    "remote":      "github",
+    "repository":  "CaptainThrowback/android_device_qcom_common",
+    "target_path": "device/qcom/common",
+    "revision":    "android-8.0"
+  }
+]
