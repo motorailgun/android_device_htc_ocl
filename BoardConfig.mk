@@ -66,6 +66,13 @@ TARGET_HW_DISK_ENCRYPTION := true
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
+# HIDL
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.1.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.2.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.3.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.4.xml
+
 # Lineage Hardware
 JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(DEVICE_PATH)/lineagehw|**/*.java
 
