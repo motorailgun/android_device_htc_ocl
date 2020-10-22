@@ -1,0 +1,110 @@
+import /vendor/etc/init/hw/init.qcom.rc
+import /vendor/etc/init/hw/init.htc.common.rc
+import /vendor/etc/init/hw/init.htc.usb.configfs.rc
+import /vendor/etc/init/hw/init.htc_ocl.fp.rc
+import /vendor/etc/init/hw/init.common.nanohub.rc
+import init.htc.storage.exfat.rc
+import /vendor/etc/init/hw/init.htc_storage.rc
+
+# SSD_RIL ++
+# Log level control
+on property:persist.sys.htcdebugflag=1
+    setprop log.tag.RILJ V
+    setprop log.tag.RILQ V
+    setprop log.tag.QMI_FW V
+    setprop log.tag.QC-NETMGR-LIB V
+    setprop log.tag.Diag_Lib V
+
+on property:persist.sys.htcdebugflag=0
+    setprop log.tag.RILJ W
+    setprop log.tag.RILQ W
+    setprop log.tag.QMI_FW W
+    setprop log.tag.QC-NETMGR-LIB W
+    setprop log.tag.Diag_Lib W
+
+# TMO trustonic daemon
+service tsdaemon /system/vendor/bin/tsdaemon
+    class main
+    user radio
+    group system radio
+# SSD_RIL --
+
+# SSD_Network ++
+# Log level control
+on property:persist.sys.htcdebugflag=1
+    setprop log.tag.dnsmasq V
+    setprop log.tag.Netd V
+    setprop log.tag.NetdConnector V
+    setprop log.tag.IptablesRestoreController V
+    setprop log.tag.BandwidthController V
+    setprop log.tag.NetUtilsWrapper V
+    setprop log.tag.iptables V
+    setprop log.tag.ip6tables V
+
+on property:persist.sys.htcdebugflag=0
+    setprop log.tag.dnsmasq W
+    setprop log.tag.Netd W
+    setprop log.tag.NetdConnector W
+    setprop log.tag.IptablesRestoreController W
+    setprop log.tag.BandwidthController W
+    setprop log.tag.NetUtilsWrapper W
+    setprop log.tag.iptables W
+    setprop log.tag.ip6tables W
+# SSD_Network --
+
+# SSD_ModemBSP ++
+# Write rom verion to radio smem driver on late-fs
+on late-fs
+    write /sys/module/htc_radio_smem/parameters/rom_ver ${ro.product.version}
+# SSD_ModemBSP --
+
+# SSD_NFC ++
+# Permissions for Felica
+on boot
+    chmod 0600 /dev/cxd224x-i2c
+    chown nfc nfc /dev/cxd224x-i2c
+
+on post-fs-data
+    mkdir /data/vendor/nfc 0770 nfc nfc
+# SSD_NFC --
+
+#--------------Camera add start
+# log level control
+on property:persist.sys.htcdebugflag=1
+    setprop persist.log.tag.mm-camera V
+    setprop persist.log.tag.ANDR-PERF-PNPUTIL V
+    setprop persist.log.tag.QCamera V
+    setprop persist.log.tag.OMX-VENC V
+    setprop persist.log.tag.mm-3a-core V
+    setprop persist.log.tag.QCameraHWI_Mem V
+    setprop persist.log.tag.camera_calibration V
+    setprop persist.log.tag.camera-HTC-AEC V
+    setprop persist.log.tag.QCamera3HWI V
+
+on property:persist.sys.htcdebugflag=0
+    setprop persist.log.tag.mm-camera W
+    setprop persist.log.tag.ANDR-PERF-PNPUTIL W
+    setprop persist.log.tag.QCamera W
+    setprop persist.log.tag.OMX-VENC W
+    setprop persist.log.tag.mm-3a-core W
+    setprop persist.log.tag.QCameraHWI_Mem W
+    setprop persist.log.tag.camera_calibration W
+    setprop persist.log.tag.camera-HTC-AECC W
+    setprop persist.log.tag.QCamera3HWI W
+#--------------Camera add end
+
+# camera added
+on property:camera.sysfile.ok=1
+    restorecon /sys/android_camera2/sensor
+    chown camera camera /sys/android_camera2/sensor
+# camera added end
+
+on boot
+	setprop sys.usb.configfs 1
+	setprop sys.usb.controller "a800000.dwc3"
+
+# HTC Automotive - BEGIN 2017-5-15
+service cand /system/bin/cand
+ class main
+ user root
+# HTC Automotive – END

@@ -1,0 +1,4 @@
+on boot
+    chown nfc sb_felica /mnt/nfc_record
+    chmod 0770 /mnt/nfc_record
+    restorecon_recursive /mnt/nfc_record
