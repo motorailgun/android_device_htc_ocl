@@ -71,7 +71,7 @@ JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(DEVICE_PATH)/lineagehw|**/*.jav
 # Security patch level
 VENDOR_SECURITY_PATCH := 2020-09-01
 
--include device/htc/ocl/BoardConfigTWRP.mk
+# -include device/htc/ocl/BoardConfigTWRP.mk
 -include vendor/htc/ocl/BoardConfigVendor.mk
 
 
