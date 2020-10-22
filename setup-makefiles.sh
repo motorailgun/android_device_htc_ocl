@@ -18,10 +18,10 @@
 
 set -e
 
-DEVICE=*** FILL IN DEVICE ****
-VENDOR=*** FILL IN VENDOR ****
+DEVICE=ocl
+VENDOR=htc
 
-INITIAL_COPYRIGHT_YEAR=**** FILL IN COPYRIGHT YEAR ****
+INITIAL_COPYRIGHT_YEAR=2020
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
