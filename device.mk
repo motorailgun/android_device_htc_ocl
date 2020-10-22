@@ -40,4 +40,3 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=1M
 endif
 
-PRODUCT_COPY_FILES += device/htc/ocl/twrp.fstab:recovery>root>etc>twrp.fstab

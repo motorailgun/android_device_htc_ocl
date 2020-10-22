@@ -17,12 +17,22 @@
 # Sample: This is where we'd set a backup provider if we had one
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
 
-# Inherit TWRP device configuration
-$(call inherit-product-if-exists, device/htc/ocl/twrp_ocl.mk)
+# Release name
+PRODUCT_RELEASE_NAME := ocl
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-PRODUCT_NAME := omni_ocl
-PRODUCT_BRAND := htc
+# Inherit from ocl device
+$(call inherit-product, device/htc/ocl/device.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+
+
+PRODUCT_NAME := lineage_ocl
+PRODUCT_BRAND := HTC
+PRODUCT_MODEL := HTC U11 Life
 PRODUCT_DEVICE := ocl
+PRODUCT_MANUFACTURER := HTC
