@@ -55,6 +55,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --second_offset 0x00f00000 --tags_offset 0x00000100 --board boot:0
 
 TARGET_PREBUILT_KERNEL := device/htc/ocl/prebuilts/kernel
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
 
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
